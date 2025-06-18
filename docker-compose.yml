@@ -1,0 +1,101 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: dorsia-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dorsia_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d dorsia_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dorsia-network
+
+  # Next.js Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: dorsia-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/dorsia_dev?schema=public
+      - NEXTAUTH_SECRET=your-secret-key-here
+      - NEXTAUTH_URL=http://localhost:3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: >
+      sh -c "
+        echo 'Waiting for database...' &&
+        sleep 5 &&
+        npx prisma generate &&
+        npx prisma migrate deploy &&
+        (npm run prisma:seed || echo 'Seeding failed, continuing...') &&
+        npm run dev
+      "
+    networks:
+      - dorsia-network
+
+  # Production build (optional)
+  app-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: dorsia-app-prod
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/dorsia_dev?schema=public
+      - NEXTAUTH_SECRET=your-secret-key-here
+      - NEXTAUTH_URL=http://localhost:3001
+    ports:
+      - "3001:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    profiles:
+      - production
+    networks:
+      - dorsia-network
+
+  # Database Management Tool (optional)
+  adminer:
+    image: adminer:4.8.1
+    container_name: dorsia-adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    profiles:
+      - tools
+    networks:
+      - dorsia-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  dorsia-network:
+    driver: bridge 

@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+As practice, I decided to code up a solution to this prompt:
+
+“Design a restaurant reservation platform (like OpenTable or Resy) that allows users to search for restaurants and make real-time reservations. You should support high-end restaurants with limited seating, multiple turn times, and complex rules like table joins, holds, and cancellation policies.”
+
+⸻
+
+🧩 Requirements
+
+Functional:
+	•	Search for restaurants by location, cuisine, and availability.
+	•	View restaurant availability in real-time.
+	•	Make, modify, and cancel reservations.
+	•	Restaurants can configure:
+	•	Table layouts (e.g. table joins for large parties)
+	•	Turn times (e.g. 90 minutes per seating)
+	•	Blackout periods (e.g. private events)
+	•	No-show and cancellation policies.
+
+Non-Functional:
+	•	High availability and low-latency (esp. for booking flow).
+	•	Handle traffic spikes (e.g., 7 PM slots at popular restaurants).
+	•	Strong consistency for reservation confirmation.
+	•	Multi-tenant (many restaurants, each with custom configs).
+	•	Mobile and web clients (assume API backend).
+
 
 ## Getting Started
 
-First, run the development server:
+With docker compose, run the command
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up --build
 ```
+
+That will start the postgres database and seed it with some reservations
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

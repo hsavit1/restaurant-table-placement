@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Database
+*.db
+*.sqlite
+
+# Environment files
+.env*
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Coverage
+coverage/
+
+# Prisma generated files
+prisma/migrations/
+
+# Public assets
+public/
+
+# Package lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Config files that don't need linting
+*.config.js
+*.config.mjs
+next.config.ts
+tailwind.config.ts
+postcss.config.mjs 
