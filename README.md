@@ -27,13 +27,13 @@ Non-Functional:
 
 Here's what the application looks like:
 
-![Restaurant Search](screeshots/Screenshot%202025-06-20%20at%2012.00.20%20AM.png)
+![Restaurant Search](screenshots/Screenshot%202025-06-20%20at%2012.00.20%20AM.png)
 *Restaurant search and listing page*
 
-![Restaurant Details](screeshots/Screenshot%202025-06-20%20at%2012.00.57%20AM.png)
+![Restaurant Details](screenshots/Screenshot%202025-06-20%20at%2012.00.57%20AM.png)
 *Restaurant details and reservation booking*
 
-![Reservations Management](screeshots/Screenshot%202025-06-20%20at%2012.01.22%20AM.png)
+![Reservations Management](screenshots/Screenshot%202025-06-20%20at%2012.01.22%20AM.png)
 *Reservations management and cancellation*
 
 ## Getting Started
