@@ -10,7 +10,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Dorsia - Restaurant Reservations',
+  title: 'Mini Dorsia - Restaurant Reservations',
   description: 'Discover exceptional restaurants and book your perfect table in seconds.',
 }
 

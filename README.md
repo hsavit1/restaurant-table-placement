@@ -23,6 +23,18 @@ Non-Functional:
 - Multi-tenant (many restaurants, each with custom configs). ❌
 - Mobile and web clients (assume API backend) - web client only 
 
+## Screenshots
+
+Here's what the application looks like:
+
+![Restaurant Search](screeshots/Screenshot%202025-06-20%20at%2012.00.20%20AM.png)
+*Restaurant search and listing page*
+
+![Restaurant Details](screeshots/Screenshot%202025-06-20%20at%2012.00.57%20AM.png)
+*Restaurant details and reservation booking*
+
+![Reservations Management](screeshots/Screenshot%202025-06-20%20at%2012.01.22%20AM.png)
+*Reservations management and cancellation*
 
 ## Getting Started
 

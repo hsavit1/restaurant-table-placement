@@ -16,7 +16,7 @@ export default function Navigation() {
             <div className="p-2 bg-blue-600 rounded-lg">
               <ChefHat className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">Dorsia</span>
+            <span className="text-xl font-bold text-gray-900">Mini Dorsia</span>
           </Link>
 
           {/* Navigation Links */}
